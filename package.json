@@ -1,0 +1,17 @@
+{
+  "name": "dice-wars-fullstack",
+  "version": "1.0.0",
+  "description": "Dice Wars \u2014 Multiplayer (React + Node/Socket.IO)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  },
+  "engines": {
+    "node": "16.x || 18.x || 20.x"
+  }
+}

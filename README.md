@@ -1,29 +1,16 @@
-# Dice Wars — Web (Mobile-friendly) — client-only ZIP
+# Dice Wars — Multiplayer (React + Node)
 
-This package contains a **mobile-friendly web client** for Dice Wars. It is multiplayer-capable but **does not include a server**. You must run or deploy a compatible Socket.IO server for multiplayer to work (see notes below).
+A playful, open-source take on Dice Wars. This repo contains a React front-end (Vite) and a Node/Express + Socket.IO server. It's designed for easy deployment on Render/Fly/Railway and for tinkering.
 
-Files included:
-- index.html — responsive UI and lobby
-- client.js — Socket.IO client + mobile touch controls
-- style.css — responsive styles
-- manifest.json — PWA manifest (add icons to make installable)
+## Quickstart
+1. npm install
+2. npm start
 
-## How to use
-1. Host these files as static files (e.g., GitHub Pages, Netlify, Vercel, or any static host).
-2. Enter your server URL in the "Server URL" box (or leave blank to use same origin).
-3. Create a room (server must support 'createRoom' event) or enter a room code and Join.
+The start script will build the client and start the server. Visit http://localhost:3000
 
-## Compatible server
-The client expects a Socket.IO server that supports the following events and replies (these are the same conventions used in the server I previously gave you):
-- Client -> server: `createRoom` (no payload). Server should emit back `roomCreated` with `{ roomId }`.
-- Client -> server: `joinRoom` with `{ roomId, name }`. Server should emit `joined` with `{ playerId, roomId, players }` and then broadcast `playerList`/`gameState` updates.
-- Server -> client: `gameState` will contain `{ players, grid, turnIndex, started }` which the client renders.
-- Client -> server: `attack`, `endTurn`, `reinforce` events as used in previous server.
+## How to help
+- Improve UI, add animations, make the map bigger
+- Add authentication, persistent rooms, rankings
+- Improve game AI or add bots
 
-If you need, I can also adapt the server code to match this client exactly and produce a separate server ZIP.
-
-## Notes
-- This client is touch-optimized (pointer events) and includes a simple UI for creating/joining rooms.
-- To make a fully installable mobile app (APK) from this client, use a wrapper such as Capacitor or Cordova and copy these files into the `www/` directory.
-
-Want me to also produce a matching **server ZIP** that implements the exact `createRoom`/`joined` flow so you can deploy it to Render/Fly/Railway? I can do that next and then produce a single zip containing both server + mobile client, or create a deployment guide for a specific host.
+License: MIT
